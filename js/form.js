@@ -23,16 +23,25 @@ botaoAdicionar.addEventListener("click",function(event){
         return; //para sair da função sem chegar na parte que ele adiciona na tabela - logo abaixo
     }
 
+    adicionaPacienteNaTabela(paciente);
+    
     //utilizando do mesmo raciocinio de utiizar o appendChild para inserir os <td> na <tr>, vamos inserir o <tr> dentro da tabela pacientes, para que seja exibida e criado o novo usuario
     var tabela = document.querySelector("#tabela-pacientes");
 
     tabela.appendChild(pacienteTr); //informando a tabela o filho paciente tr
     
+
     form.reset();
     var mensagensErro = document.querySelector("#mensagens-erro");
     mensagensErro.innerHTML ="";
 
 });
+
+function adicionaPacienteNaTabela(paciente) {
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
+}
 
 function exibeMensagensDeErro(erros){
     var ul = document.querySelector("#mensagens-erro");
@@ -58,6 +67,8 @@ function obtemPacienteFormulario(form){
     }
     return paciente;
 }
+
+
 
 //funcao montaTr que vai receber os dados do paciente.
 function montaTr(paciente){
